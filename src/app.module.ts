@@ -11,10 +11,11 @@ import { MulterModule } from '@nestjs/platform-express';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      username: 'root',
-      password: '',
-      database: 'nest_db',
+      host: process.env.MYSQLHOST || 'localhost',
+      username: process.env.MYSQLUSER || 'root',
+      port: +process.env.MYSQLPORT,
+      password: process.env.MYSQLPASSWORD || '',
+      database: process.env.MYSQLDATABASE || 'nest_db',
       entities: [ Book,  ],
       synchronize: true,
       dropSchema: false
