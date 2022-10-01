@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Book {
@@ -17,7 +17,19 @@ export class Book {
     @Column({ default: true})
     isAvailable: boolean;
 
+    @Column()
+    ownerId: number;
+
     @Column({ default: ''})
     bookImageUrl: string
+
+    @Column({ default: ''})
+    bookImageOriginalName: string;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
 }
 
